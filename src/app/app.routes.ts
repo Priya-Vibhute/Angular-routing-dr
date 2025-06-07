@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,title:"home"},
@@ -14,7 +15,7 @@ export const routes: Routes = [
             {path:"details/:productId",component:ProductdetailComponent},
             {path:"add-product",component:AddproductComponent}
         ]},
-    {path:'profile',component:ProfileComponent,title:"profile"},
+    {path:'profile',component:ProfileComponent,title:"profile",canActivate:[authGuard]},
     {path:'dashboard',component:DashboardComponent,title:"dashboard"},
     {path:"**",component:NotfoundComponent}
 ];
